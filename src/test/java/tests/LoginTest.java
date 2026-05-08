@@ -20,7 +20,7 @@ public class LoginTest extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("practice", "WrongPassword");
         String message = loginPage.getMessage();
-        Assert.assertTrue(message.contains("Your password is invalid!"), "Invalid login message not displayed");
+        Assert.assertTrue(message.contains("Your password is invalid!"), "Invalid login");
     }
 
     @Test(priority = 3)

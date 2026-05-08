@@ -9,7 +9,6 @@ public class LoginPage extends BasePage {
     public LoginPage(WebDriver driver) {
         super(driver);
     }
-
     By usernameField = By.id("username");
     By passwordField = By.id("password");
     By loginButton = By.xpath("//button[contains(text(),'Login')]");
@@ -24,7 +23,6 @@ public class LoginPage extends BasePage {
     public String getMessage() {
         return getText(message);
     }
-
     public void clickLogout() {
         clickElement(logoutButton);
     }

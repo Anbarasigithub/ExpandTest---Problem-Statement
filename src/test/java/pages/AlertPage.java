@@ -20,35 +20,28 @@ public class AlertPage extends BasePage {
     public void openAlertsPage() {
         driver.get("https://practice.expandtesting.com/js-dialogs");
     }
-
     public void clickJsAlert() {
         clickElement(jsAlertButton);
     }
-
     public void acceptAlert() {
         Alert alert = driver.switchTo().alert();
         alert.accept();
     }
-
     public void clickJsConfirm() {
         clickElement(jsConfirmButton);
     }
-
     public void dismissConfirm() {
         Alert alert = driver.switchTo().alert();
         alert.dismiss();
     }
-
     public void clickJsPrompt() {
         clickElement(jsPromptButton);
     }
-
     public void enterPromptText(String text) {
         Alert alert = driver.switchTo().alert();
         alert.sendKeys(text);
         alert.accept();
     }
-
     public String getResultText() {
         return getText(resultText);
     }
