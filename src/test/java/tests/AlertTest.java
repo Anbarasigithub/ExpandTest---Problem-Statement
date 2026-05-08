@@ -1,31 +1,15 @@
 package tests;
 
+import base.BaseTest;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import pages.AlertPage;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-
-import java.time.Duration;
-
-public class AlertTest {
-
-    WebDriver driver;
+public class AlertTest extends BaseTest {
     AlertPage alertPage;
-    @BeforeMethod
-    public void setup() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        alertPage = new AlertPage(driver);
-    }
-
     @Test
     public void verifyJsAlert() {
+        alertPage = new AlertPage(driver);
         alertPage.openAlertsPage();
         alertPage.clickJsAlert();
         alertPage.acceptAlert();
@@ -34,6 +18,7 @@ public class AlertTest {
 
     @Test
     public void verifyJsConfirm() {
+        alertPage = new AlertPage(driver);
         alertPage.openAlertsPage();
         alertPage.clickJsConfirm();
         alertPage.dismissConfirm();
@@ -42,14 +27,10 @@ public class AlertTest {
 
     @Test
     public void verifyJsPrompt() {
+        alertPage = new AlertPage(driver);
         alertPage.openAlertsPage();
         alertPage.clickJsPrompt();
         alertPage.enterPromptText("I am a Js Alert");
         Assert.assertTrue(alertPage.getResultText().contains("I am a Js Alert"));
-    }
-
-    @AfterMethod
-    public void tearDown() {
-        driver.quit();
     }
 }
